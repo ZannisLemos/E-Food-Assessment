@@ -1,0 +1,36 @@
+Ερωτη,α 1
+
+/* Συνολικό ποσό και αριθμος παραγγελιών ανά user*/
+
+SELECT USER_ID, COUNT(USER_ID) AS TOTAL_ORDERS_JANUARY_2021, ROUND(SUM(BASKET),2) AS ORDER_VALUE, ROUND(AVG(BASKET),2) AS AVERAGE_ORDER_VALUE
+FROM `bi-2019-test.ad_hoc.orders_jan2021`
+GROUP BY USER_ID
+ORDER BY ORDER_VALUE DESC;
+
+
+/* Συχνότητα παραγγελιών ανά user μέσα στον μήνα Ιανουάριο*/
+
+SELECT USER_ID, COUNT(USER_ID) AS TOTAL_ORDERS_JANUARY_2021, ROUND(SUM(BASKET),2) AS ORDER_VALUE ,ROUND(COUNT(USER_ID)/31,2)AS ORDERS_PER_DAY, ROUND(SUM(BASKET)/31,2) AS ORDER_VALUE_PER_DAY
+FROM `bi-2019-test.ad_hoc.orders_jan2021`
+GROUP BY USER_ID 
+ORDER BY ORDERS_PER_DAY DESC;
+
+
+Μερικά comments για το πως προσάγγισα το ερωτημα 2 του Assessment.
+
+Αρχικά ήθελα να μάθω στο business κομμάτι, τι θεωρούμε ότι ειναι ένας loyal customer και τι πρέπει να κάνουμε για να δημιουργήσουμε περισσότερους.
+Ψάχνωντας στο Ιντερνετ διάβασα οτι ουσιαστικα για να θεωρήσουμε οτι αυξάνουμε το customer loyalty σε ενα target group, θα πρέπει ο customer να επαναλαμβάνει τις
+
+https://marketbusinessnews.com/financial-glossary/customer-loyalty/#:~:text=%E2%80%9CCustomer%20loyalty%20can%20be%20said,an%20extended%20period%20of%20time.%E2%80%9D
+https://sci-hub.do/https://www.tandfonline.com/doi/abs/10.1080/15378020.2018.1546076?journalCode=wfbr20
+https://www.cloudways.com/blog/build-customer-loyalty/
+
+/* Συχνότητα παραγγελιών ανά user_id και κουζίνα="breakfast" με κριτήριο ότι το συνολικό ποσό αλλα και ο αριθμός των παραγγελιών ανά ημέρα να είναι πάνω από τον μέσο όρο */
+
+SELECT USER_ID, ROUND(SUM(BASKET),2) AS TOTAL_ORDERS_VALUE, ROUND(COUNT(USER_ID)/31,2) AS ORDERS_PER_DAY, ROUND(SUM(BASKET)/31,2) AS ORDER_VALUE_PER_DAY
+FROM `bi-2019-test.ad_hoc.orders_jan2021`
+WHERE CUISINE_PARENT="Breakfast" 
+GROUP BY USER_ID
+HAVING TOTAL_ORDERS_VALUE > (SELECT SUM(BASKET)/COUNT(DISTINCT USER_ID) FROM `bi-2019-test.ad_hoc.orders_jan2021` WHERE CUISINE_PARENT="Breakfast" ) 
+AND ORDERS_PER_DAY > (SELECT ROUND(COUNT(USER_ID)/31,2)/COUNT(DISTINCT USER_ID) FROM `bi-2019-test.ad_hoc.orders_jan2021` WHERE CUISINE_PARENT="Breakfast")
+ORDER BY ORDERS_PER_DAY DESC;
