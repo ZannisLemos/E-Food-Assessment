@@ -5,15 +5,16 @@ Hello everyone!
 
 A few words about my assessment :)
 
-For the coding part of the assessment I have used the SQL Editor provided as a link in the word file.
+1) For the coding part of the assessment, (please refer to: Part 1 - SQL Code), I have used the SQL Editor provided as a link in the word file.
 
-For the visualization part of the assessment I have made a tableau dashboard (instructions below). Moreover i have made a powerpoint presentation with printscreens from the results, and a few comments for my findings.
+
+2) For the visualization part of the assessment I have made a tableau dashboard (instructions below). Moreover i have made a powerpoint presentation with printscreens from the results, and a few comments for my findings.
 
 Tableau installation instructions:
 
 STEP 1:
 
-Please follow the link  https://public.tableau.com/en-us/s/download in order to go to tableau main page.
+Please follow the link  https://public.tableau.com/en-us/s/download in order to go to Tableau main page.
 
 STEP 2:
 
@@ -27,4 +28,5 @@ STEP 4:
 
 After the download is complete, please open the exe file and click install. That's it :)
 
-I Have also made some comments and changes regarding the mini assessment (please refer to
+
+3) I Have also made some comments and changes regarding the mini assessment (please refer to: Part 2 - Mini Assessment)
