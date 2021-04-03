@@ -1,6 +1,33 @@
 E-Food Mini Assessment
 
-#1
+*****COMMENTS******
+
+Βλέπωντας ξανά το mini assessment παρατήρησα οτι μπορούσα να είχα απαντήσει τα ερωτήματα Q1,Q2 με τον παρακάτω αλγόριθμο, καταναλώνοντας λιγότερο 
+χρόνο στην εκτέλεση του αλγορίθμου (με το σκεπτικό οτι το process θα γίνεται σε εκατομμυρια γραμμές και οχι σε ένα δείγμα) 
+αλλά και επίσης είναι πιο structured και "όμορφο στο μάτι".
+
+*******************
+
+/* Updated answer for Q1, Q2*/
+
+For every city that exceeds the 500 orders we would like to know:
+- how many orders are placed in the "Breakfast" cuisine (Breakfast_Orders)?
+- how many users ordered from the "Breakfast" cuisine (Breakfast_Users)?
+
+SELECT CITY, COUNT(ORDER_ID) AS TOTAL_ORDERS, COUNT(DISTINCT USER_ID) AS USERS
+FROM `bi-2019-test.ad_hoc.orders_jan2021`
+WHERE CUISINE_PARENT = "Breakfast" 
+GROUP BY CITY 
+HAVING COUNT(ORDER_ID)>500
+ORDER BY COUNT(ORDER_ID) DESC
+LIMIT 10;
+
+
+
+#OLD Q1 ANSWER#
+For every city that exceeds the 500 orders we would like to know:
+- how many orders are placed in the "Breakfast" cuisine (Breakfast_Orders)?
+
 SELECT CITY, COUNT(*) AS TOTAL_ORDERS
 FROM `bi-2019-test.ad_hoc.orders_jan2021`
 WHERE CUISINE_PARENT = "Breakfast" AND CITY IN (SELECT CITY FROM `bi-2019-test.ad_hoc.orders_jan2021` 
@@ -10,7 +37,10 @@ GROUP BY CITY
 ORDER BY COUNT(*) DESC
 LIMIT 10;
 
-#2
+#OLD Q2 ANSWER#
+For every city that exceeds the 500 orders we would like to know:
+- how many users ordered from the "Breakfast" cuisine (Breakfast_Users)?
+
 SELECT CITY, COUNT(DISTINCT USER_ID) AS USERS
 FROM `bi-2019-test.ad_hoc.orders_jan2021`
 WHERE CUISINE_PARENT = "Breakfast" AND CITY IN (SELECT CITY FROM `bi-2019-test.ad_hoc.orders_jan2021` 
@@ -20,7 +50,10 @@ GROUP BY CITY
 ORDER BY COUNT(*) DESC
 LIMIT 10;
 
-#3
+#Q3
+For every city that exceeds the 500 orders we would like to know:
+what is the Average Basket of the Breakfast_Users that we defined before?
+
 SELECT USER_ID, ROUND(AVG(BASKET),2) AS AVERAGE_BASKET
 FROM `bi-2019-test.ad_hoc.orders_jan2021`
 WHERE CITY IN (SELECT CITY FROM `bi-2019-test.ad_hoc.orders_jan2021` 
