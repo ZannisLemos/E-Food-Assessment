@@ -6,9 +6,14 @@ E-Food Mini Assessment
 χρόνο στην εκτέλεση του αλγορίθμου (με το σκεπτικό οτι το process θα γίνεται σε εκατομμυρια γραμμές και οχι σε ένα δείγμα) 
 αλλά και επίσης είναι πιο structured και "όμορφο στο μάτι".
 
+Για το ερώτημα Q3 μίκρυνα τον αλγόριθμο καθώς είχα κάνει έναν περιττο υπολογογισμό.
+Ένας άλλος τρόπος θα ήταν να φτιάξω εναν temp πίνακα με τα μοναδικα user_ids που είχαν παραγγείλει "breakfast" και να έκανα 
+
 *******************
 
+
 /* Updated answer for Q1, Q2*/
+
 
 For every city that exceeds the 500 orders we would like to know:
 - how many orders are placed in the "Breakfast" cuisine (Breakfast_Orders)?
@@ -22,6 +27,23 @@ HAVING COUNT(ORDER_ID)>500
 ORDER BY COUNT(ORDER_ID) DESC
 LIMIT 10;
 
+/* Updated answer for Q3*/
+
+For every city that exceeds the 500 orders we would like to know:
+what is the Average Basket of the Breakfast_Users that we defined before?
+
+SELECT USER_ID, ROUND(AVG(BASKET),2) AS AVERAGE_BASKET
+FROM `bi-2019-test.ad_hoc.orders_jan2021`
+WHERE USER_ID IN(SELECT DISTINCT USER_ID FROM `bi-2019-test.ad_hoc.orders_jan2021`WHERE CUISINE_PARENT = "Breakfast" AND CITY IN (SELECT CITY FROM `bi-2019-test.ad_hoc.orders_jan2021` 
+GROUP BY CITY 
+HAVING COUNT(ORDER_ID)>500))
+GROUP BY USER_ID
+ORDER BY AVERAGE_BASKET DESC
+LIMIT 10;
+
+
+
+*******Old Answers********
 
 
 #OLD Q1 ANSWER#
@@ -50,7 +72,7 @@ GROUP BY CITY
 ORDER BY COUNT(*) DESC
 LIMIT 10;
 
-#Q3
+#OLD Q3 ANSWER#
 For every city that exceeds the 500 orders we would like to know:
 what is the Average Basket of the Breakfast_Users that we defined before?
 
