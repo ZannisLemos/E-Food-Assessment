@@ -26,3 +26,5 @@ A tableaupublicdesktop.exe file will start downloading.
 STEP 4:
 
 After the download is complete, please open the exe file and click install. That's it :)
+
+I Have also made some comments and changes regarding the mini assessment (please refer to
