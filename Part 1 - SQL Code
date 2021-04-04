@@ -39,6 +39,8 @@ https://www.cloudways.com/blog/build-customer-loyalty/
 
 *********
 
+Ερώτημα 2
+
 /* Συχνότητα παραγγελιών ανά user_id και κουζίνα="breakfast" με κριτήριο ότι το συνολικό ποσό αλλα και ο αριθμός των παραγγελιών ανά ημέρα να είναι πάνω από τον μέσο όρο */
 
 SELECT USER_ID, ROUND(SUM(BASKET),2) AS TOTAL_ORDERS_VALUE, ROUND(COUNT(ORDER_ID)/31,2) AS ORDERS_PER_DAY, ROUND(SUM(BASKET)/31,2) AS ORDER_VALUE_PER_DAY
