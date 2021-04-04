@@ -26,7 +26,10 @@ A tableaupublicdesktop.exe file will start downloading.
 
 STEP 4:
 
-After the download is complete, please open the exe file and click install. That's it :)
+After the download is complete, please open the exe file and click install. 
 
+STEP 5: 
+
+Please open the attached file "Zannis Lemos E-Food Assessment.twbx" That's it :)
 
 3) I Have also made some comments and changes regarding the mini assessment (please refer to: Part 2 - Mini Assessment)
