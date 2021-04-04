@@ -4,7 +4,7 @@ E-Food Mini Assessment
 
 Βλέπωντας ξανά το mini assessment παρατήρησα οτι μπορούσα να είχα απαντήσει τα ερωτήματα Q1,Q2 με τον παρακάτω αλγόριθμο, καταναλώνοντας λιγότερο 
 χρόνο στην εκτέλεση του αλγορίθμου (με το σκεπτικό οτι το process θα γίνεται σε εκατομμυρια γραμμές και οχι σε ένα δείγμα) 
-αλλά και επίσης είναι πιο structured και "όμορφο στο μάτι".
+αλλά και επίσης να είναι πιο structured και "όμορφο στο μάτι".
 
 Για το ερώτημα Q3 μίκρυνα τον αλγόριθμο καθώς είχα κάνει έναν περιττο υπολογογισμό.
 
@@ -30,6 +30,7 @@ LIMIT 10;
 
 For every city that exceeds the 500 orders we would like to know:
 what is the Average Basket of the Breakfast_Users that we defined before?
+we need the Average Basket of their total orders, not just Breakfast orders
 
 SELECT USER_ID, ROUND(AVG(BASKET),2) AS AVERAGE_BASKET
 FROM `bi-2019-test.ad_hoc.orders_jan2021`
